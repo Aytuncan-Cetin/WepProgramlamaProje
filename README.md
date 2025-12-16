@@ -1,4 +1,4 @@
 # WepProgramlamaProje
-WebProgramlamaProjeOdevi1
+WebProgramlamaProjeOdevi_1
 Aytuncan ÇETİN
 B211210308
