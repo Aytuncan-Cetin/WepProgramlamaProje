@@ -1,0 +1,65 @@
+﻿@model SporSalonuYonetim.Models.Antrenor
+
+@{
+    ViewData["Title"] = "Antrenör Detayı";
+}
+
+<h2>Antrenör Detayı</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.FotoUrl))
+        {
+            <img src="@Model.FotoUrl" class="img-fluid img-thumbnail mb-3" alt="@Model.AdSoyad" />
+        }
+    </div>
+    <div class="col-md-8">
+        <dl class="row">
+            <dt class="col-sm-3">Ad Soyad</dt>
+            <dd class="col-sm-9">@Model.AdSoyad</dd>
+
+            <dt class="col-sm-3">Uzmanlık</dt>
+            <dd class="col-sm-9">@Model.UzmanlikAlanlari</dd>
+
+            <dt class="col-sm-3">Özgeçmiş</dt>
+            <dd class="col-sm-9">@Model.Ozgecmis</dd>
+
+            <dt class="col-sm-3">Salon</dt>
+            <dd class="col-sm-9">@Model.Salon?.Ad</dd>
+        </dl>
+
+        <h5>Verdiği Hizmetler</h5>
+        <ul>
+            @if (Model.AntrenorHizmetler != null && Model.AntrenorHizmetler.Any())
+            {
+                foreach (var h in Model.AntrenorHizmetler)
+                {
+                    <li>@h.Hizmet?.Ad</li>
+                }
+            }
+            else
+            {
+                <li>Henüz tanımlı hizmet yok.</li>
+            }
+        </ul>
+
+        <h5>Müsaitlik Saatleri</h5>
+        <ul>
+            @if (Model.Musaitliklar != null && Model.Musaitliklar.Any())
+            {
+                foreach (var m in Model.Musaitliklar)
+                {
+                    <li>@m.Gun - @m.BaslangicSaati.ToString(@"hh\:mm") - @m.BitisSaati.ToString(@"hh\:mm")</li>
+                }
+            }
+            else
+            {
+                <li>Henüz müsaitlik tanımlı değil.</li>
+            }
+        </ul>
+    </div>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Düzenle</a>
+<a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>

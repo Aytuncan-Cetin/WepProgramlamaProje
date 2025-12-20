@@ -1,0 +1,71 @@
+﻿@model SporSalonuYonetim.Models.YapayZekaOneri
+
+@{
+    ViewData["Title"] = "Yapay Zekâ Egzersiz / Diyet Önerisi";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-8">
+
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Yapay Zekâ Egzersiz / Diyet Öneri Sistemi</h4>
+            </div>
+
+            <div class="card-body">
+                <p class="text-muted">
+                    Boy, kilo ve hedef bilgilerinize göre Google Gemini tabanlı yapay zekâ
+                    sizin için kişisel egzersiz ve beslenme önerileri üretir.
+                </p>
+
+                <form asp-action="Index" method="post" novalidate>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="Boy" class="form-label">Boy (cm)</label>
+                            <input asp-for="Boy" class="form-control" />
+                            <span asp-validation-for="Boy" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="Kilo" class="form-label">Kilo (kg)</label>
+                            <input asp-for="Kilo" class="form-control" />
+                            <span asp-validation-for="Kilo" class="text-danger small"></span>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label asp-for="Hedef" class="form-label">Hedef</label>
+                            <select asp-for="Hedef" class="form-select">
+                                <option value="Kilo Verme">Kilo Verme</option>
+                                <option value="Kilo Alma">Kilo Alma</option>
+                                <option value="Kas Geliştirme">Kas Geliştirme</option>
+                                <option value="Form Koruma">Form Koruma</option>
+                            </select>
+                            <span asp-validation-for="Hedef" class="text-danger small"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="VucutTipi" class="form-label">Vücut Tipi (opsiyonel)</label>
+                        <input asp-for="VucutTipi" class="form-control"
+                               placeholder="Ektomorf / Mezomorf / Endomorf (bilmiyorsan boş bırak)" />
+                    </div>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="text-muted small">
+                            Not: İlk olarak Gemini modeli kullanılır, yoğunluk/erişim sorunu olursa
+                            sistem yerleşik akıllı öneri motoruna otomatik geçer.
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            Öneri Oluştur
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,41 @@
+﻿@model List<SporSalonuYonetim.Models.Randevu>
+
+<h2>Randevularım</h2>
+<hr />
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Hizmet</th>
+            <th>Antrenör</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>Onay</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.Hizmet.Ad</td>
+                <td>@r.Antrenor.AdSoyad</td>
+                <td>@r.Baslangic.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@r.Bitis.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@(r.Onaylandi ? "Onaylandı" : "Bekliyor")</td>
+                <td>
+                    @if (r.Baslangic > DateTime.Now)
+                    {
+                        <form asp-action="IptalEt" asp-route-id="@r.Id" method="post" onsubmit="return confirm('Bu randevuyu iptal etmek istediğine emin misin?');">
+                            <button class="btn btn-sm btn-danger">İptal Et</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-muted">Geçmiş</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

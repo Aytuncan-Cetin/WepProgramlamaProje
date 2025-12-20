@@ -1,0 +1,27 @@
+﻿@model SporSalonuYonetim.Models.Antrenor
+
+@{
+    ViewData["Title"] = "Antrenörü Sil";
+}
+
+<h2>Antrenörü Sil</h2>
+<hr />
+
+<h4>Bu antrenörü silmek istediğinize emin misiniz?</h4>
+
+<dl class="row">
+    <dt class="col-sm-3">Ad Soyad</dt>
+    <dd class="col-sm-9">@Model.AdSoyad</dd>
+
+    <dt class="col-sm-3">Uzmanlık</dt>
+    <dd class="col-sm-9">@Model.UzmanlikAlanlari</dd>
+
+    <dt class="col-sm-3">Salon</dt>
+    <dd class="col-sm-9">@Model.Salon?.Ad</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>

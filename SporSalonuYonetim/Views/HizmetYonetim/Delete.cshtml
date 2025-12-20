@@ -1,0 +1,31 @@
+﻿@model SporSalonuYonetim.Models.Hizmet
+
+@{
+    ViewData["Title"] = "Hizmeti Sil";
+}
+
+<h2>Hizmeti Sil</h2>
+<hr />
+
+<h4>Bu hizmeti silmek istediğinize emin misiniz?</h4>
+
+<dl class="row">
+    <dt class="col-sm-3">Ad</dt>
+    <dd class="col-sm-9">@Model.Ad</dd>
+
+    <dt class="col-sm-3">Süre (dk)</dt>
+    <dd class="col-sm-9">@Model.SureDakika</dd>
+
+    <dt class="col-sm-3">Ücret</dt>
+    <dd class="col-sm-9">@Model.Ucret.ToString("0.00")</dd>
+
+    <dt class="col-sm-3">Kategori</dt>
+    <dd class="col-sm-9">@Model.Kategori</dd>
+</dl>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">Vazgeç</a>
+</form>
+

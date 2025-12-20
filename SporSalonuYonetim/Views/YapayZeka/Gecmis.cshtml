@@ -1,0 +1,97 @@
+﻿@model List<SporSalonuYonetim.Models.YapayZekaOneriKaydi>
+
+@{
+    ViewData["Title"] = "Yapay Zekâ Öneri Geçmişim";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-lg-10">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3 class="mb-0">Yapay Zekâ Öneri Geçmişim</h3>
+            <a asp-action="Index" class="btn btn-primary btn-sm">Yeni Öneri Al</a>
+        </div>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                Henüz kayıtlı bir yapay zekâ öneriniz bulunmuyor.
+            </div>
+        }
+        else
+        {
+            <table class="table table-striped table-bordered table-sm align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Tarih</th>
+                        <th>Boy / Kilo</th>
+                        <th>Hedef</th>
+                        <th>Vücut Tipi</th>
+                        <th>Detay</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var k in Model)
+                    {
+                        <tr>
+                            <td>@k.OlusturulmaTarihi.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@k.Boy cm / @k.Kilo kg</td>
+                            <td>@k.Hedef</td>
+                            <td>@(string.IsNullOrWhiteSpace(k.VucutTipi) ? "-" : k.VucutTipi)</td>
+                            <td>
+                                <button type="button"
+                                        class="btn btn-outline-secondary btn-sm"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#detayModal"
+                                        data-icerik="@k.OneriMetni.Replace("\"", "&quot;")">
+                                    Görüntüle
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<!-- Detay Modal -->
+<div class="modal fade" id="detayModal" tabindex="-1" aria-labelledby="detayModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detayModalLabel">Öneri Detayı</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <pre id="detayIcerik" style="white-space: pre-wrap; font-size: 0.95rem;"></pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                        class="btn btn-outline-secondary btn-sm"
+                        onclick="copyDetay()">
+                    Metni Kopyala
+                </button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var detayModal = document.getElementById('detayModal');
+        detayModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var icerik = button.getAttribute('data-icerik') || '';
+            document.getElementById('detayIcerik').textContent = icerik;
+        });
+
+        function copyDetay() {
+            var text = document.getElementById('detayIcerik').textContent || "";
+            navigator.clipboard.writeText(text)
+                .then(() => alert("Metin panoya kopyalandı."))
+                .catch(() => alert("Metin kopyalanırken hata oluştu."));
+        }
+    </script>
+}

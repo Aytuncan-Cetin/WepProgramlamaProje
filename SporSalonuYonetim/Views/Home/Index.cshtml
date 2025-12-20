@@ -1,0 +1,172 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+    bool kullaniciGirisli = User.Identity?.IsAuthenticated ?? false;
+}
+
+@if (!kullaniciGirisli)
+{
+    <!-- Ziyaretçi (müşteri) için hoş geldin sayfası -->
+    <section class="mb-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <span class="badge rounded-pill bg-primary-subtle text-primary mb-3 px-3 py-2">
+                    Spor hedefine buradan başla
+                </span>
+
+                <h1 class="fw-bold mb-3" style="font-size: 2.2rem;">
+                    Formuna kavuşmak için
+                    <span class="text-primary">tek ihtiyacın</span> randevunu oluşturmak.
+                </h1>
+
+                <p class="text-muted mb-4">
+                    SporSalonuYönetim ile, ihtiyacına uygun antrenörü seçip birkaç tıklama ile
+                    randevu alabilir, istersen yapay zekâ destekli egzersiz ve diyet önerileriyle
+                    programını kişiselleştirebilirsin.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-primary px-4">
+                        Üye Ol ve Başla
+                    </a>
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-outline-primary px-4">
+                        Zaten Üyeyim
+                    </a>
+                </div>
+
+                <div class="d-flex flex-wrap gap-4 mt-4 small text-muted">
+                    <div>
+                        <span class="fw-semibold text-dark">Kolay Randevu</span><br />
+                        Aynı gün içinde bile uygun saat bul.
+                    </div>
+                    <div>
+                        <span class="fw-semibold text-dark">Uzman Antrenörler</span><br />
+                        Hedefine göre eşleşen eğitmenler.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card border-0 shadow-sm rounded-4 home-hero-card">
+                    <div class="card-body p-4">
+                        <h5 class="fw-semibold mb-3">Nasıl Çalışır?</h5>
+
+                        <ol class="list-unstyled mb-0 small">
+                            <li class="mb-3 d-flex">
+                                <div class="me-3">
+                                    <span class="badge rounded-circle bg-primary text-white">1</span>
+                                </div>
+                                <div>
+                                    <div class="fw-semibold">Ücretsiz üye ol</div>
+                                    <div class="text-muted">
+                                        E-posta adresinle birkaç saniyede kayıt ol, profilini oluştur.
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="mb-3 d-flex">
+                                <div class="me-3">
+                                    <span class="badge rounded-circle bg-primary text-white">2</span>
+                                </div>
+                                <div>
+                                    <div class="fw-semibold">Hizmet ve antrenör seç</div>
+                                    <div class="text-muted">
+                                        Fitness, kilo verme, güçlenme vb. hedeflerine uygun hizmeti ve
+                                        sana en uygun antrenörü seç.
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="mb-0 d-flex">
+                                <div class="me-3">
+                                    <span class="badge rounded-circle bg-primary text-white">3</span>
+                                </div>
+                                <div>
+                                    <div class="fw-semibold">Müsait saate randevu al</div>
+                                    <div class="text-muted">
+                                        Antrenörün uygun olduğu saatlerden birini seç, randevunu onayla
+                                        ve salona geldiğinde hazır ol.
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="h5 fw-semibold mb-3">Neden SporSalonuYönetim?</h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="fw-semibold mb-2">Dakikalar içinde randevu</h5>
+                        <p class="text-muted small mb-0">
+                            Uygun antrenör ve saatleri tek ekranda gör, randevunu birkaç tıklama ile al.
+                            Telefonla arama, mesaj trafiği derdi yok.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="fw-semibold mb-2">Hedefine uygun antrenör</h5>
+                        <p class="text-muted small mb-0">
+                            Kilo verme, kas geliştirme, esneklik veya kondisyon… Uzmanlık alanına göre
+                            senin için en doğru antrenörü seç.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body">
+                        <h5 class="fw-semibold mb-2">Yapay zekâ destekli program</h5>
+                        <p class="text-muted small mb-3">
+                            Boy, kilo, vücut tipi ve hedef bilgilerini gir; sistem sana özel egzersiz ve
+                            beslenme önerileri oluştursun.
+                        </p>
+                        <a asp-controller="YapayZeka" asp-action="Index"
+                           class="btn btn-sm btn-outline-secondary">
+                            Örnek AI öneri ekranını gör
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else
+{
+    <!-- Giriş yapmış üye için ana sayfa -->
+    <section class="mb-4">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
+                <h2 class="h4 fw-semibold mb-2">
+                    Tekrar hoş geldin, @User.Identity!.Name!
+                </h2>
+                <p class="text-muted mb-4">
+                    Spor hedeflerine devam etmek için buradasın. Aşağıdaki kısayollardan hızlıca
+                    randevu oluşturabilir, mevcut randevularını görebilir veya yapay zekâ önerilerini inceleyebilirsin.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2">
+                    <a asp-controller="Randevu" asp-action="Create" class="btn btn-primary px-4">
+                        Yeni Randevu Oluştur
+                    </a>
+                    <a asp-controller="Randevu" asp-action="Index" class="btn btn-outline-primary px-4">
+                        Randevularımı Gör
+                    </a>
+                    <a asp-controller="YapayZeka" asp-action="Index" class="btn btn-outline-secondary px-4">
+                        Yapay Zekâ Önerim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+}

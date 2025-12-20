@@ -1,0 +1,133 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = SporSalonuYonetim
+build_property.RootNamespace = SporSalonuYonetim
+build_property.ProjectDir = C:\Users\mstf1\source\repos\SporSalonuYonetim\SporSalonuYonetim\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\mstf1\source\repos\SporSalonuYonetim\SporSalonuYonetim
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/AdminMusaitlik/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5NdXNhaXRsaWtcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/AntrenorYonetim/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW50cmVub3JZb25ldGltXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/AntrenorYonetim/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW50cmVub3JZb25ldGltXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/AntrenorYonetim/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW50cmVub3JZb25ldGltXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/AntrenorYonetim/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW50cmVub3JZb25ldGltXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/AntrenorYonetim/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW50cmVub3JZb25ldGltXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/HizmetYonetim/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGl6bWV0WW9uZXRpbVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/HizmetYonetim/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGl6bWV0WW9uZXRpbVxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/HizmetYonetim/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGl6bWV0WW9uZXRpbVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/HizmetYonetim/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGl6bWV0WW9uZXRpbVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/HizmetYonetim/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGl6bWV0WW9uZXRpbVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Randevu/AdminIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxBZG1pbkluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Randevu/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Randevu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFuZGV2dVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Raporlar/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmFwb3JsYXJcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/YapayZeka/Gecmis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWFwYXlaZWthXEdlY21pcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/YapayZeka/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWFwYXlaZWthXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/YapayZeka/Sonuc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcWWFwYXlaZWthXFNvbnVjLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/mstf1/source/repos/SporSalonuYonetim/SporSalonuYonetim/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-i6cuaxw6a6

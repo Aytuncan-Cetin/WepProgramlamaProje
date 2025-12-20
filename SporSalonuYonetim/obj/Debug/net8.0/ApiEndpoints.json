@@ -1,0 +1,49 @@
+[
+  {
+    "ContainingType": "SporSalonuYonetim.Controllers.RaporController",
+    "Method": "TumAntrenorler",
+    "RelativePath": "api/Rapor/antrenorler",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SporSalonuYonetim.Controllers.RaporController",
+    "Method": "UygunAntrenorler",
+    "RelativePath": "api/Rapor/antrenorler-uygun",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tarih",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "saat",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SporSalonuYonetim.Controllers.RaporController",
+    "Method": "UyeRandevular",
+    "RelativePath": "api/Rapor/uye-randevular",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

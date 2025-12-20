@@ -1,0 +1,48 @@
+﻿@model SporSalonuYonetim.Models.Hizmet
+
+@{
+    ViewData["Title"] = "Yeni Hizmet";
+}
+
+<h2>Yeni Hizmet</h2>
+<hr />
+
+<p><strong>Salon:</strong> @ViewBag.SalonAdi</p>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Ad" class="form-label"></label>
+        <input asp-for="Ad" class="form-control" />
+        <span asp-validation-for="Ad" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SureDakika" class="form-label"></label>
+        <input asp-for="SureDakika" class="form-control" />
+        <span asp-validation-for="SureDakika" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Ucret" class="form-label"></label>
+        <input asp-for="Ucret" class="form-control" />
+        <span asp-validation-for="Ucret" class="text-danger"></span>
+        <small class="text-muted">Örn: 250,00 veya 250.00</small>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Kategori" class="form-label"></label>
+        <input asp-for="Kategori" class="form-control" />
+        <span asp-validation-for="Kategori" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+</form>
+
+@* DİKKAT: AŞAĞIDAKİ Scripts BLOĞUNU SİLİYORUZ / KULLANMIYORUZ
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+*@

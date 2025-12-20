@@ -1,0 +1,73 @@
+﻿@model SporSalonuYonetim.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Üye Ol";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<form asp-action="Register" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Ad" class="form-label"></label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Soyad" class="form-label"></label>
+                <input asp-for="Soyad" class="form-control" />
+                <span asp-validation-for="Soyad" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Hedef" class="form-label"></label>
+                <input asp-for="Hedef" class="form-control" />
+                <span asp-validation-for="Hedef" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label asp-for="BoyCm" class="form-label"></label>
+                <input asp-for="BoyCm" class="form-control" />
+                <span asp-validation-for="BoyCm" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="KiloKg" class="form-label"></label>
+                <input asp-for="KiloKg" class="form-control" />
+                <span asp-validation-for="KiloKg" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ConfirmPassword" class="form-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Üye Ol</button>
+    <a asp-action="Login" class="btn btn-link">Zaten hesabım var</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

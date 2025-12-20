@@ -1,0 +1,170 @@
+﻿@{
+    ViewData["Title"] = "Raporlar";
+}
+
+<h2>Raporlar</h2>
+<hr />
+
+<div class="row">
+
+    <!-- Kart 1: Tüm Antrenörler -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                Tüm Antrenörler
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    Sistemde tanımlı tüm antrenörleri JSON API üzerinden getirir.
+                </p>
+                <button class="btn btn-primary w-100" onclick="getTumAntrenorler()">
+                    Listeyi Getir
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Kart 3: Belirli Üyenin Randevuları -->
+    <div class="col-md-4 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-info text-white">
+                Üye Randevuları
+            </div>
+            <div class="card-body">
+                <div class="mb-2">
+                    <label class="form-label">Üye E-posta</label>
+                    <input type="email" id="uyeEmail" class="form-control" placeholder="ogrenci@sakarya.edu.tr" />
+                </div>
+                <button class="btn btn-info w-100" onclick="getUyeRandevular()">
+                    Randevuları Getir
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr />
+
+<!-- Sonuç Alanı -->
+<div class="card mt-3">
+    <div class="card-header">
+        Sonuç
+    </div>
+    <div class="card-body">
+        <div id="raporSonuc">Henüz bir sorgu yapılmadı.</div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const baseUrl = '@Url.Content("~/")';
+
+        function htmlEscape(str) {
+            return str
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+        }
+
+        // Kart 1: Tüm antrenörler
+        async function getTumAntrenorler() {
+            const url = baseUrl + "api/rapor/antrenorler";
+            const resp = await fetch(url);
+            if (!resp.ok) {
+                document.getElementById("raporSonuc").innerHTML = "<div class='text-danger'>Hata oluştu.</div>";
+                return;
+            }
+            const data = await resp.json();
+
+            if (data.length === 0) {
+                document.getElementById("raporSonuc").innerHTML = "<div class='text-muted'>Kayıt bulunamadı.</div>";
+                return;
+            }
+
+            let html = "<h5>Tüm Antrenörler</h5>";
+            html += "<table class='table table-striped table-sm'><thead><tr><th>Id</th><th>Ad Soyad</th><th>Uzmanlık</th></tr></thead><tbody>";
+            data.forEach(a => {
+                html += `<tr><td>${a.id}</td><td>${htmlEscape(a.adSoyad)}</td><td>${htmlEscape(a.uzmanlikAlanlari ?? "")}</td></tr>`;
+            });
+            html += "</tbody></table>";
+
+            document.getElementById("raporSonuc").innerHTML = html;
+        }
+
+        // Kart 2: Uygun antrenörler
+        async function getUygunAntrenorler() {
+            const tarih = document.getElementById("uygunTarih").value;
+            const saat = document.getElementById("uygunSaat").value;
+
+            if (!tarih || !saat) {
+                alert("Lütfen tarih ve saat seçin.");
+                return;
+            }
+
+            const url = baseUrl + `api/rapor/antrenorler-uygun?tarih=${tarih}&saat=${saat}`;
+            const resp = await fetch(url);
+            if (!resp.ok) {
+                document.getElementById("raporSonuc").innerHTML = "<div class='text-danger'>Hata oluştu.</div>";
+                return;
+            }
+
+            const data = await resp.json();
+
+            let html = `<h5>${tarih} ${saat} için Uygun Antrenörler</h5>`;
+            if (data.length === 0) {
+                html += "<div class='text-muted'>Bu tarih/saat için uygun antrenör bulunamadı.</div>";
+            } else {
+                html += "<table class='table table-striped table-sm'><thead><tr><th>Id</th><th>Ad Soyad</th><th>Uzmanlık</th></tr></thead><tbody>";
+                data.forEach(a => {
+                    html += `<tr><td>${a.id}</td><td>${htmlEscape(a.adSoyad)}</td><td>${htmlEscape(a.uzmanlikAlanlari ?? "")}</td></tr>`;
+                });
+                html += "</tbody></table>";
+            }
+
+            document.getElementById("raporSonuc").innerHTML = html;
+        }
+
+        // Kart 3: Üye randevuları
+        async function getUyeRandevular() {
+            const email = document.getElementById("uyeEmail").value;
+            if (!email) {
+                alert("Lütfen bir e-posta girin.");
+                return;
+            }
+
+            const url = baseUrl + `api/rapor/uye-randevular?email=${encodeURIComponent(email)}`;
+            const resp = await fetch(url);
+            if (!resp.ok) {
+                if (resp.status === 404) {
+                    document.getElementById("raporSonuc").innerHTML = "<div class='text-warning'>Bu e-posta ile kayıtlı üye bulunamadı.</div>";
+                } else {
+                    document.getElementById("raporSonuc").innerHTML = "<div class='text-danger'>Hata oluştu.</div>";
+                }
+                return;
+            }
+
+            const data = await resp.json();
+
+            let html = `<h5>${htmlEscape(email)} kullanıcısının randevuları</h5>`;
+            if (data.length === 0) {
+                html += "<div class='text-muted'>Bu üyenin randevusu bulunmuyor.</div>";
+            } else {
+                html += "<table class='table table-striped table-sm'><thead><tr><th>Hizmet</th><th>Antrenör</th><th>Başlangıç</th><th>Bitiş</th><th>Onay</th></tr></thead><tbody>";
+                data.forEach(r => {
+                    html += `<tr>
+                                <td>${htmlEscape(r.hizmet)}</td>
+                                <td>${htmlEscape(r.antrenor)}</td>
+                                <td>${r.baslangic}</td>
+                                <td>${r.bitis}</td>
+                                <td>${r.onaylandi ? "Onaylandı" : "Bekliyor"}</td>
+                             </tr>`;
+                });
+                html += "</tbody></table>";
+            }
+
+            document.getElementById("raporSonuc").innerHTML = html;
+        }
+    </script>
+}

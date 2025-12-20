@@ -1,0 +1,47 @@
+﻿@model SporSalonuYonetim.Models.Antrenor
+
+@{
+    ViewData["Title"] = "Antrenörü Düzenle";
+}
+
+<h2>Antrenörü Düzenle</h2>
+<hr />
+
+<p><strong>Salon:</strong> @ViewBag.SalonAdi</p>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="AdSoyad" class="form-label"></label>
+        <input asp-for="AdSoyad" class="form-control" />
+        <span asp-validation-for="AdSoyad" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="UzmanlikAlanlari" class="form-label"></label>
+        <input asp-for="UzmanlikAlanlari" class="form-control" />
+        <span asp-validation-for="UzmanlikAlanlari" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Ozgecmis" class="form-label"></label>
+        <textarea asp-for="Ozgecmis" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Ozgecmis" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="FotoUrl" class="form-label"></label>
+        <input asp-for="FotoUrl" class="form-control" />
+        <span asp-validation-for="FotoUrl" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+    <a asp-action="Index" class="btn btn-secondary">Listeye Dön</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

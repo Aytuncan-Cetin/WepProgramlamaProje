@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SporSalonuYonetim</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="app-body">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-2">
+            <div class="container">
+
+                <a class="navbar-brand fw-bold fs-5" asp-controller="Home" asp-action="Index">
+                    Spor Salonu Yönetim
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+
+                    <!-- SOL MENÜ -->
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Anasayfa</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Randevu" asp-action="Create">Randevu Al</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Randevu" asp-action="Index">Randevularım</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="YapayZeka" asp-action="Index">AI Öneri</a>
+                        </li>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="HizmetYonetim" asp-action="Index">Hizmet Yönetimi</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="AntrenorYonetim" asp-action="Index">Antrenör Yönetimi</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Raporlar" asp-action="Index">Raporlar</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Randevu" asp-action="AdminIndex">Randevu Yönetimi</a>
+                            </li>
+                        }
+                    </ul>
+
+                    <!-- SAĞ MENÜ -->
+                    <ul class="navbar-nav ms-auto align-items-center gap-3">
+
+                        @if (User.Identity?.IsAuthenticated ?? false)
+                        {
+                            <li class="nav-item">
+                                <span class="navbar-text text-light fw-semibold small">
+                                    Merhaba, @User.Identity!.Name
+                                </span>
+                            </li>
+
+                            <li class="nav-item">
+                                <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-light btn-sm px-3">
+                                        Çıkış Yap
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn-sm px-3" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="btn btn-light btn-sm px-3" asp-controller="Account" asp-action="Register">Üye Ol</a>
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="app-main">
+        <div class="container py-4">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="text-center text-muted py-3 border-top small">
+        © @DateTime.Now.Year - Spor Salonu Yönetim Sistemi
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

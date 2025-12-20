@@ -1,0 +1,115 @@
+﻿@model SporSalonuYonetim.Models.RandevuOlusturViewModel
+
+@{
+    ViewData["Title"] = "Randevu Oluştur";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-10 col-xl-8">
+        <div class="card app-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <h4 class="mb-0">Randevu Oluştur</h4>
+                    <small class="text-secondary">Antrenörünü ve hizmetini seç, sana uygun saatten randevunu ayarla.</small>
+                </div>
+                <span class="badge bg-success bg-opacity-75">
+                    Yeni Randevu
+                </span>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="AntrenorId" class="form-label fw-semibold"></label>
+                            <select asp-for="AntrenorId" class="form-select"
+                                    asp-items="@(new SelectList(Model.Antrenorler, "Id", "AdSoyad"))" id="AntrenorId">
+                                <option value="">-- Antrenör Seçin --</option>
+                            </select>
+                            <span asp-validation-for="AntrenorId" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="HizmetId" class="form-label fw-semibold"></label>
+                            <select asp-for="HizmetId" class="form-select"
+                                    asp-items="@(new SelectList(Model.Hizmetler, "Id", "Ad"))" id="HizmetId">
+                                <option value="">-- Hizmet Seçin --</option>
+                            </select>
+                            <span asp-validation-for="HizmetId" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Tarih" class="form-label fw-semibold"></label>
+                            <input asp-for="Tarih" class="form-control" type="date" id="Tarih" />
+                            <span asp-validation-for="Tarih" class="text-danger"></span>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label asp-for="Saat" class="form-label fw-semibold"></label>
+                            <select asp-for="Saat" class="form-select" id="Saat">
+                                <option value="">Önce antrenör, hizmet ve tarih seçin</option>
+                            </select>
+                            <span asp-validation-for="Saat" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-light">
+                            Randevularım
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            Randevu Al
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function yukleMusaitSaatler() {
+            var antrenorId = $("#AntrenorId").val();
+            var hizmetId = $("#HizmetId").val();
+            var tarih = $("#Tarih").val();
+
+            var $saat = $("#Saat");
+            $saat.empty();
+
+            if (!antrenorId || !hizmetId || !tarih) {
+                $saat.append($("<option>").val("").text("Önce antrenör, hizmet ve tarih seçin"));
+                return;
+            }
+
+            $saat.append($("<option>").val("").text("Yükleniyor..."));
+
+            $.getJSON('@Url.Action("MusaitSaatler", "Randevu")', {
+                antrenorId: antrenorId,
+                tarih: tarih,
+                hizmetId: hizmetId
+            }).done(function (data) {
+                $saat.empty();
+                if (!data || data.length === 0) {
+                    $saat.append($("<option>").val("").text("Bu gün için müsait saat yok"));
+                    return;
+                }
+
+                $saat.append($("<option>").val("").text("Saat seçin"));
+                $.each(data, function (i, saat) {
+                    $saat.append($("<option>").val(saat).text(saat));
+                });
+            }).fail(function () {
+                $saat.empty();
+                $saat.append($("<option>").val("").text("Saatler yüklenirken hata oluştu"));
+            });
+        }
+
+        $(function () {
+            $("#AntrenorId, #HizmetId, #Tarih").on("change", yukleMusaitSaatler);
+        });
+    </script>
+}
